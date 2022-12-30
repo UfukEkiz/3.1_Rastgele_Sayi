@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span>
+      1'den 99'a kadar sayıları for döngüsü ile ekrana yazdırmak üzere yazdır
+    </span>
+    <button id="siralaBtn">Sırala</button>
+    <br />
+    <br />
+
+    <div id="sayilarKutusu"></div>
+    <br />
+    <button id="rastgeleBtn" disabled>Rastgele Sayı Seç</button>
+    <br />
+
+    <script>
+        const siralaButon = document.getElementById("siralaBtn");
+const rastgeleButon = document.getElementById("rastgeleBtn");
+const sayilarKutusu = document.getElementById("sayilarKutusu");
+const renkleriKaldir = document.getElementById("renkleriKaldir");
+
+function butonCalistir() {
+  for (let i = 1; i < 100; i++) {
+    sayilarKutusu.innerHTML += `<span class="sayi${i}">${i}</span> `;
+    if (i % 10 === 0) {
+      sayilarKutusu.innerHTML += `<span><br/><br/></span>`;
+    }
+  }
+
+  siralaButon.setAttribute("disabled", true);
+  rastgeleButon.removeAttribute("disabled");
+}
+
+siralaButon.addEventListener("click", butonCalistir);
+
+function rastgeleBoya() {
+  const random = Math.floor(Math.random() * 100);
+  const element = document.querySelector(`.sayi${random}`);
+
+  element.style.color = "red";
+}
+
+rastgeleButon.addEventListener("click", rastgeleBoya);
+
+    </script>
+  </body>
+</html>
